@@ -1,0 +1,5 @@
+var $j=jQuery.noConflict();$j.view=(function(){var proto={},queue={};if(!Object.create){Object.create=function(o){function F(){}
+F.prototype=o;return new F();};}
+function dequeue(){var instance,closure,el;for(var selector in queue){el=$j(selector);if(!el.length)continue;instance=Object.create(proto);instance.el=el;closure=queue[selector];closure.apply(instance);}
+queue=null;}
+proto.$=function(selector){return this.el.find(selector);};proto.bind=function(){for(var i=0,n=arguments.length;i<n;i++){$j.isFunction(arguments[i])&&$j.proxy(arguments[i],this);}};return function(selector,closure){if(arguments.length==0)return dequeue();queue[selector]=closure;};})();

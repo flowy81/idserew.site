@@ -1,0 +1,36 @@
+Type.registerNamespace('HHTSitecore.services');
+HHTSitecore.services.HHTSessionService=function() {
+HHTSitecore.services.HHTSessionService.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+HHTSitecore.services.HHTSessionService.prototype={
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return HHTSitecore.services.HHTSessionService._staticInstance.get_path();},
+CloseFooterWidget:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'CloseFooterWidget',false,{},succeededCallback,failedCallback,userContext); },
+SaveFireplaceOpeningFilterParameters:function(url,height,width,depth,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveFireplaceOpeningFilterParameters',false,{url:url,height:height,width:width,depth:depth},succeededCallback,failedCallback,userContext); }}
+HHTSitecore.services.HHTSessionService.registerClass('HHTSitecore.services.HHTSessionService',Sys.Net.WebServiceProxy);
+HHTSitecore.services.HHTSessionService._staticInstance = new HHTSitecore.services.HHTSessionService();
+HHTSitecore.services.HHTSessionService.set_path = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_path(value); }
+HHTSitecore.services.HHTSessionService.get_path = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_path(); }
+HHTSitecore.services.HHTSessionService.set_timeout = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_timeout(value); }
+HHTSitecore.services.HHTSessionService.get_timeout = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_timeout(); }
+HHTSitecore.services.HHTSessionService.set_defaultUserContext = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_defaultUserContext(value); }
+HHTSitecore.services.HHTSessionService.get_defaultUserContext = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_defaultUserContext(); }
+HHTSitecore.services.HHTSessionService.set_defaultSucceededCallback = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_defaultSucceededCallback(value); }
+HHTSitecore.services.HHTSessionService.get_defaultSucceededCallback = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_defaultSucceededCallback(); }
+HHTSitecore.services.HHTSessionService.set_defaultFailedCallback = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_defaultFailedCallback(value); }
+HHTSitecore.services.HHTSessionService.get_defaultFailedCallback = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_defaultFailedCallback(); }
+HHTSitecore.services.HHTSessionService.set_enableJsonp = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_enableJsonp(value); }
+HHTSitecore.services.HHTSessionService.get_enableJsonp = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_enableJsonp(); }
+HHTSitecore.services.HHTSessionService.set_jsonpCallbackParameter = function(value) { HHTSitecore.services.HHTSessionService._staticInstance.set_jsonpCallbackParameter(value); }
+HHTSitecore.services.HHTSessionService.get_jsonpCallbackParameter = function() { return HHTSitecore.services.HHTSessionService._staticInstance.get_jsonpCallbackParameter(); }
+HHTSitecore.services.HHTSessionService.set_path("/services/hhtsessionservice.asmx");
+HHTSitecore.services.HHTSessionService.CloseFooterWidget= function(onSuccess,onFailed,userContext) {HHTSitecore.services.HHTSessionService._staticInstance.CloseFooterWidget(onSuccess,onFailed,userContext); }
+HHTSitecore.services.HHTSessionService.SaveFireplaceOpeningFilterParameters= function(url,height,width,depth,onSuccess,onFailed,userContext) {HHTSitecore.services.HHTSessionService._staticInstance.SaveFireplaceOpeningFilterParameters(url,height,width,depth,onSuccess,onFailed,userContext); }
